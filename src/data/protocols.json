@@ -1,0 +1,24 @@
+[
+       {
+      "id": 1,
+      "title": "Security Gate Tap-In at Academic Building",
+      "location": "NYU Shanghai, Main Entrance",
+      "who": "Institutional",
+      "signals": "RFID beep, turnstile lock, guard presence",
+      "benefits": "University security & attendance tracking",
+      "skips": "Deliveries, VIP visitors escorted by staff",
+      "drift": "Tailgating normalized; guards wave groups through at peak hours",
+      "isExample": true
+    },
+    {
+      "id": 2,
+      "title": "Elevator Priority Negotiation",
+      "location": "NYU Shanghai, W Tower",
+      "who": "Vernacular",
+      "signals": "Body language, floor button illumination, eye contact avoidance",
+      "benefits": "Those closest to the door",
+      "skips": "Informal courtesy for heavy loads",
+      "drift": "Phone-absorbed riders miss implicit signals — vernacular protocol eroding under attention scarcity",
+      "isExample": true
+    }
+  ]
