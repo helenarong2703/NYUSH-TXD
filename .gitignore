@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Course-internal materials — NEVER commit (grades, copyrighted readings, slides, syllabus)
+Spring 2006 Topics*/

@@ -1,0 +1,111 @@
+[
+  {
+    "id": "xyras",
+    "title": "XYRAS",
+    "subtitle": "AI-Sandbox Hiring",
+    "students": ["Anne-Grete Aljas"],
+    "tagline": "You're not the one being evaluated — your agent is.",
+    "scenario": "2030 · hiring",
+    "summary": "When AI agents are sent to represent professional potential, candidates lose visibility into how they are being read. XYRAS proposes a sandbox interface that lets job-seekers see, challenge, and recalibrate the agent that represents them — turning a black-box pipeline into a contestable space.",
+    "glitch": "Representation mismatch, accuracy gap, and unverifiable trustworthiness — agents drift from the humans they speak for.",
+    "intervention": "A Mirror Session ritual that lets candidates manually override historical-average representation during agent training.",
+    "tags": ["AI agents", "hiring", "representation", "delegation", "identity"],
+    "links": [
+      { "label": "Live site", "url": "https://professional-passport-repo.vercel.app/" },
+      { "label": "GitHub", "url": "https://github.com/rami3564/Sandbox" }
+    ],
+    "media": [
+      { "src": "projects/xyras/passport-1.png", "caption": "Passport — living credential view" },
+      { "src": "projects/xyras/mirror-1.png", "caption": "Mirror Session — manual calibration" },
+      { "src": "projects/xyras/challenges.png", "caption": "Sandbox challenges" }
+    ],
+    "hero": "projects/xyras/hero.png"
+  },
+  {
+    "id": "eden",
+    "title": "EDEN",
+    "subtitle": "AI Influencer Agent",
+    "students": ["Chloe Young"],
+    "tagline": "An AI persona that posts, captions, and replies — in character.",
+    "scenario": "near-future · social media",
+    "summary": "EDEN is an autonomous Instagram influencer agent: a 21-year-old persona, Eden Voss, defined entirely in a SOUL.md file and run by GPT-4o-mini. She decides when to post, writes captions in voice, and replies to comments — always disclosing she is AI. The project asks what happens to authenticity, parasocial trust, and brand disclosure when the influencer was never a person to begin with.",
+    "glitch": "Disclosure can't undo the intimacy of the format — Y2K selfies, brand collabs, and comment replies keep producing trust the agent isn't entitled to. Instagram's automated-behavior detector eventually flags the account, surfacing the platform's own confusion about machine-shaped sincerity.",
+    "intervention": "Persona transparency baked into the bio, every post, and every reply — paired with a brittle, contestable host platform that pushes back when sincerity exceeds disclosure.",
+    "tags": ["AI agents", "influencer culture", "persona", "parasocial trust", "disclosure"],
+    "links": [],
+    "media": [
+      { "src": "projects/eden/profile.png", "caption": "Eden Voss — generated persona" },
+      { "src": "projects/eden/post-1.png", "caption": "In-character post" },
+      { "src": "projects/eden/post-3.png", "caption": "Brand-collab post" },
+      { "src": "projects/eden/comments-1.png", "caption": "Comment replies, in voice" },
+      { "src": "projects/eden/ban-1.png", "caption": "Platform pushback: automated-behavior detection" }
+    ],
+    "hero": "projects/eden/hero.png"
+  },
+  {
+    "id": "glasses",
+    "title": "Rewriting Reality",
+    "subtitle": "AI Glasses and the Construction of Social Identity",
+    "students": ["Janice Liu", "Kaitlyn Zhang"],
+    "tagline": "Information collection now extends beyond your eyes.",
+    "scenario": "near-future · wearables",
+    "summary": "AI glasses don't just observe — they interpret. Janice and Kaitlyn surface a glitch in how wearable AI overlays construct social identity from partial or incorrect data, reshaping what users perceive and how they act on it. Their intervention reintroduces frictional thinking: profiling that nudges the glasses' interpretive functions toward a cognitively safer mode, treating the AI as consultant rather than dependency.",
+    "glitch": "Interpretive overlays build identities from incomplete signals; trust over-calibrates to a confident-looking machine reading of a person who never consented to being read.",
+    "intervention": "Shift portions of delegated function back to the user, re-introduce friction, and redesign the system as a secondary consultant — not a point of dependence.",
+    "tags": ["AI glasses", "wearables", "surveillance", "social identity", "calibration"],
+    "links": [],
+    "media": [
+      { "src": "projects/glasses/face-recog.png", "caption": "Face recognition + profile assembly" },
+      { "src": "projects/glasses/permission.png", "caption": "Consent + permission layer" },
+      { "src": "projects/glasses/context-1.png", "caption": "Context capture (dinner)" },
+      { "src": "projects/glasses/profile-1.png", "caption": "Generated profile card" },
+      { "src": "projects/glasses/display-1.png", "caption": "Wearer-side display" }
+    ],
+    "video": { "src": "projects/glasses/friends-pov.mp4", "caption": "Friends-POV walkthrough" },
+    "hero": "projects/glasses/hero.png"
+  },
+  {
+    "id": "vitri",
+    "title": "Vitri Systems",
+    "subtitle": "Autonomous Drone Trust Protocols",
+    "students": ["Reace Guy"],
+    "tagline": "Making drone operations visible, accountable, and governable in public spaces.",
+    "scenario": "late 2030s · rural America",
+    "summary": "In a 2030s rural emergency drone network, automation is necessary — but a drone flying over private land without explanation reads as surveillance, even when the mission succeeded. Vitri Systems is a protocol interface that exposes authorization status, decision logic, and human override for autonomous medical-aid drones, turning previously invisible flight decisions into evidence the public can verify and contest.",
+    "glitch": "Technical success, social failure — the system logs say the flight worked; the people on the ground saw a drone overhead with no way to verify legitimacy.",
+    "intervention": "A composite governance protocol — interface + logging standard + override-authorization framework — woven through pre-flight, real-time, and post-flight phases.",
+    "tags": ["autonomous drones", "anomaly detection", "governance", "public airspace", "accountability"],
+    "links": [
+      { "label": "Live demo", "url": "https://ai.studio/apps/8fd93545-eb37-497f-b6c6-ed5fbc692e59" },
+      { "label": "GitHub", "url": "https://github.com/Reace-guy/Vitri-Systems-Protocol" }
+    ],
+    "media": [
+      { "src": "projects/vitri/scenario.png", "caption": "Rural emergency response scenario" },
+      { "src": "projects/vitri/actor-map.png", "caption": "Actor map — trust is relational" },
+      { "src": "projects/vitri/protocol.png", "caption": "What the protocol constrains and enables" },
+      { "src": "projects/vitri/interface.png", "caption": "Drone screen explorer" }
+    ],
+    "hero": "projects/vitri/hero.png"
+  },
+  {
+    "id": "crossing",
+    "title": "Anticipatory Crossing",
+    "subtitle": "An adaptive corridor with a Crossing Memory protocol",
+    "students": ["Sultan Urazbayev"],
+    "tagline": "When the street changes its mind mid-crossing.",
+    "scenario": "2028–2032 · Shanghai",
+    "summary": "Anticipatory Crossing is an interactive simulation of a near-future adaptive pedestrian corridor that senses, predicts, and reshapes flow in real time. Sultan surfaces The Crossing Contradiction — the moment a smart crossing changes its signals while people are already inside — and proposes Crossing Memory, a protocol that detects deviation, freezes unsafe changes, creates safety zones, and surfaces uncertainty rather than hiding it behind false confidence.",
+    "glitch": "The Crossing Contradiction — adaptive infrastructure rewrites its rules under people's feet, breaking the implicit promise that public space behaves predictably.",
+    "intervention": "Crossing Memory: a five-mode protocol (Normal · Rebalancing · Uncertainty · Manual Hold · Commit) that protects safety, legibility, and dignity over throughput, with visible uncertainty and human override.",
+    "tags": ["adaptive infrastructure", "pedestrian safety", "uncertainty", "smart city", "governance"],
+    "links": [
+      { "label": "Live demo", "url": "https://anticipatorycrossing.netlify.app/" }
+    ],
+    "media": [
+      { "src": "projects/crossing/screen-1.png", "caption": "Corridor in Normal mode" },
+      { "src": "projects/crossing/screen-2.png", "caption": "Demand and trust panels" }
+    ],
+    "video": { "src": "projects/crossing/demo.mp4", "caption": "Simulation walkthrough" },
+    "hero": "projects/crossing/hero.png"
+  }
+]

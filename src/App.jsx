@@ -1,6 +1,7 @@
 import { useState } from "react";
 import glitches from "./data/glitches.json";
 import protocolsData from "./data/protocols.json";
+import projectsData from "./data/projects.json";
 import { patternMeta, typeMeta, hardnessLabels, dimLabels, nyu, theme } from "./data/taxonomy";
 import nyushLogo from "./assets/NYU_Shanghai_logo_square.png";
 
@@ -106,7 +107,7 @@ function Home({ setPage }) {
       </section>
       <section style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px 60px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
-          {[{ k: "glitches", icon: "⚡", title: "Glitches", n: glitches.length + " documented", color: "#dc2626" }, { k: "watch", icon: "👁", title: "Protocol Watch", n: "Observations", color: nyu }, { k: "projects", icon: "🔧", title: "Design Projects", n: "Coming soon", color: "#ea580c" }].map(s => (
+          {[{ k: "glitches", icon: "⚡", title: "Glitches", n: glitches.length + " documented", color: "#dc2626" }, { k: "watch", icon: "👁", title: "Protocol Watch", n: "Observations", color: nyu }, { k: "projects", icon: "🔧", title: "Design Projects", n: projectsData.length + " final projects", color: "#ea580c" }].map(s => (
             <div key={s.k} onClick={() => setPage(s.k)} style={{ background: card, border: `1px solid ${border}`, borderRadius: 14, padding: 24, cursor: "pointer", transition: "all 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = s.color; e.currentTarget.style.transform = "translateY(-2px)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.transform = "none"; }}>
               <div style={{ fontSize: 26, marginBottom: 10 }}>{s.icon}</div>
               <h3 style={{ color: tp, fontSize: 16, fontWeight: 700, marginBottom: 2 }}>{s.title}</h3>
@@ -297,16 +298,96 @@ function Watch() {
 
 // ── Projects ──
 
+const projectAccent = "#ea580c";
+const asset = (p) => `${import.meta.env.BASE_URL}${p}`;
+
+function ProjectDetail({ p, onBack }) {
+  return (
+    <div style={{ maxWidth: 920, margin: "0 auto", padding: "28px 24px 80px" }}>
+      <button onClick={onBack} style={{ background: "none", border: "none", color: ts, cursor: "pointer", fontSize: 13, padding: 0, marginBottom: 18 }}>← All projects</button>
+      <p style={{ color: projectAccent, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>{p.scenario}</p>
+      <h1 style={{ color: tp, fontSize: 36, fontWeight: 800, lineHeight: 1.15, marginBottom: 4 }}>{p.title}</h1>
+      <p style={{ color: ts, fontSize: 16, fontWeight: 500, marginBottom: 10 }}>{p.subtitle}</p>
+      <p style={{ color: tt, fontSize: 13, marginBottom: 20 }}>By {p.students.join(" & ")}</p>
+      <div style={{ borderRadius: 14, overflow: "hidden", border: `1px solid ${border}`, marginBottom: 24, background: "#000" }}>
+        <img src={asset(p.hero)} alt={p.title} style={{ display: "block", width: "100%", height: "auto" }} />
+      </div>
+      <p style={{ color: tp, fontSize: 17, fontWeight: 600, lineHeight: 1.5, marginBottom: 22, borderLeft: `3px solid ${projectAccent}`, paddingLeft: 16 }}>{p.tagline}</p>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 24 }}>
+        <div style={{ background: card, border: `1px solid ${border}`, borderRadius: 12, padding: 18 }}>
+          <p style={{ color: tt, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Trust glitch</p>
+          <p style={{ color: "#444", fontSize: 13, lineHeight: 1.6 }}>{p.glitch}</p>
+        </div>
+        <div style={{ background: card, border: `1px solid ${border}`, borderRadius: 12, padding: 18 }}>
+          <p style={{ color: tt, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Intervention</p>
+          <p style={{ color: "#444", fontSize: 13, lineHeight: 1.6 }}>{p.intervention}</p>
+        </div>
+      </div>
+      <div style={{ background: card, border: `1px solid ${border}`, borderRadius: 12, padding: 22, marginBottom: 24 }}>
+        <h3 style={{ color: tp, fontSize: 14, fontWeight: 700, marginBottom: 8 }}>About the project</h3>
+        <p style={{ color: "#444", fontSize: 14, lineHeight: 1.75 }}>{p.summary}</p>
+      </div>
+      {(p.links?.length > 0) && (
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 28 }}>
+          {p.links.map((l, i) => (
+            <a key={i} href={l.url} target="_blank" rel="noopener noreferrer" style={{ background: projectAccent, color: "#fff", textDecoration: "none", padding: "10px 18px", borderRadius: 10, fontSize: 13, fontWeight: 600 }}>{l.label} →</a>
+          ))}
+        </div>
+      )}
+      {p.video && (
+        <div style={{ marginBottom: 24 }}>
+          <p style={{ color: tt, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>{p.video.caption}</p>
+          <video src={asset(p.video.src)} controls preload="metadata" style={{ display: "block", width: "100%", borderRadius: 12, border: `1px solid ${border}`, background: "#000" }} />
+        </div>
+      )}
+      {(p.media?.length > 0) && (
+        <div style={{ marginBottom: 24 }}>
+          <p style={{ color: tt, fontSize: 10, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>Selected screens</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+            {p.media.map((m, i) => (
+              <figure key={i} style={{ margin: 0, background: card, border: `1px solid ${border}`, borderRadius: 12, overflow: "hidden" }}>
+                <img src={asset(m.src)} alt={m.caption} style={{ display: "block", width: "100%", height: "auto" }} />
+                <figcaption style={{ color: ts, fontSize: 11, padding: "8px 12px", borderTop: `1px solid ${borderLight}` }}>{m.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      )}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        {p.tags.map(t => <Bdg key={t} bgC={subtle} color={ts}>{t}</Bdg>)}
+      </div>
+    </div>
+  );
+}
+
 function Projects() {
+  const [sel, setSel] = useState(null);
+  if (sel) return <ProjectDetail p={sel} onBack={() => setSel(null)} />;
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px 80px" }}>
-      <p style={{ color: "#ea580c", fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>TXD Design Projects</p>
+      <p style={{ color: projectAccent, fontSize: 12, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>TXD Final Projects · Spring 2026</p>
       <h1 style={{ color: tp, fontSize: 30, fontWeight: 800, marginBottom: 4 }}>Designing trust.</h1>
-      <p style={{ color: ts, fontSize: 13, lineHeight: 1.5, marginBottom: 28, maxWidth: 540 }}>Student-designed trust protocols for near-future autonomous systems. Evidence, primitives, and rituals — prototyped and stress-tested.</p>
-      <div style={{ background: card, border: `1px solid ${border}`, borderRadius: 12, padding: 40, textAlign: "center" }}>
-        <p style={{ fontSize: 32, marginBottom: 12 }}>🔧</p>
-        <p style={{ color: tp, fontSize: 16, fontWeight: 700, marginBottom: 8 }}>Projects coming soon</p>
-        <p style={{ color: ts, fontSize: 13, lineHeight: 1.6, maxWidth: 420, margin: "0 auto" }}>Final project proposals are in development. This section will feature student prototypes of trust protocols for near-future autonomous systems, organized by intervention layer: trust evidence, trust primitives, and trust rituals.</p>
+      <p style={{ color: ts, fontSize: 13, lineHeight: 1.5, marginBottom: 28, maxWidth: 580 }}>{projectsData.length} student-designed trust protocols for near-future autonomous systems — surfacing a glitch, naming a protocol, and prototyping the interface where trust would have to be earned.</p>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
+        {projectsData.map(p => (
+          <div key={p.id} onClick={() => setSel(p)} style={{ background: card, border: `1px solid ${border}`, borderRadius: 14, overflow: "hidden", cursor: "pointer", display: "flex", flexDirection: "column", transition: "border-color 0.2s, transform 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = projectAccent; e.currentTarget.style.transform = "translateY(-2px)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = border; e.currentTarget.style.transform = "none"; }}>
+            <div style={{ aspectRatio: "16 / 9", background: "#000", overflow: "hidden" }}>
+              <img src={asset(p.hero)} alt={p.title} style={{ display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 8, flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 10 }}>
+                <h3 style={{ color: tp, fontSize: 18, fontWeight: 800, margin: 0 }}>{p.title}</h3>
+                <span style={{ color: tt, fontSize: 11 }}>{p.scenario}</span>
+              </div>
+              <p style={{ color: ts, fontSize: 13, fontWeight: 500, margin: 0 }}>{p.subtitle}</p>
+              <p style={{ color: "#555", fontSize: 13, lineHeight: 1.55, margin: 0 }}>{p.tagline}</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginTop: "auto", paddingTop: 8 }}>
+                {p.tags.slice(0, 3).map(t => <Bdg key={t} bgC={subtle} color={ts} small>{t}</Bdg>)}
+              </div>
+              <p style={{ color: tt, fontSize: 11, margin: 0 }}>{p.students.join(" & ")}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -350,8 +431,22 @@ function About() {
 
 // ── App ──
 
+const validPages = ["home", "glitches", "taxonomy", "watch", "projects", "about"];
+
+function pageFromHash() {
+  const h = (typeof window !== "undefined" ? window.location.hash : "").replace(/^#/, "");
+  return validPages.includes(h) ? h : "home";
+}
+
 export default function App() {
-  const [page, setPage] = useState("home");
+  const [page, setPageState] = useState(pageFromHash());
+  const setPage = (p) => {
+    setPageState(p);
+    if (typeof window !== "undefined") window.location.hash = p === "home" ? "" : p;
+  };
+  if (typeof window !== "undefined") {
+    window.onhashchange = () => setPageState(pageFromHash());
+  }
   return (
     <div style={{ background: bg, minHeight: "100vh", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       <Nav page={page} setPage={setPage} />
